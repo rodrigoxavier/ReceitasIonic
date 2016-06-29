@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Receitas - Sysmap Solutions</title>
+    <meta name="viewport" content="initial-scale=1, maximum-scale=1, user-scalable=no, width=device-width">
+
+    <link href="lib/ionic/css/ionic.css" rel="stylesheet">
+
+    <script src="lib/ionic/js/ionic.bundle.js"></script>
+
+    <!-- Needed for Cordova/PhoneGap (will be a 404 during development) -->
+    <script src="js/app.js"></script>
+    <script src="cordova.js"></script>
+  </head>
+  <body ng-app="todo" ng-controller="TodoCtrl">
+    <ion-side-menus>
+
+      <!-- Center content -->
+      <!-- Center content -->
+    <ion-side-menu-content>
+      <ion-header-bar class="bar-dark">
+        <button class="button button-icon" ng-click="toggleProjects()">
+          <i class="icon ion-navicon"></i>
+        </button>
+        <h1 class="title">Minhas Receitas</h1>
+        <!-- New Task button-->
+        <button class="button button-icon ion-plus" data-toggle="Adicionar Receita" ng-click="newTask()">
+        </button>
+      </ion-header-bar>
+      <ion-content scroll="false">
+        <ion-list>
+          <ion-item ng-repeat="task in activeProject.tasks">
+            {{task.title}}
+          </ion-item>
+        </ion-list>
+      </ion-content>
+    </ion-side-menu-content>
+
+      <!-- Left menu -->
+      <ion-side-menu side="left">
+      <ion-header-bar class="bar-dark">
+        <span class="text-center">Menu</span>
+      </ion-header-bar>
+      <ion-content scroll="false">
+        <button class="button button-icon" ng-click="aboutMe()">
+          <i class="icon ion-person">     Sobre Mim</i>
+        </button>
+        <br/>
+        <button class="button button-icon" ng-click="doLogoff()">
+          <i class="icon ion-android-exit">     Sair</i>
+        </button>
+      </ion-content>
+      </ion-side-menu>
+    </ion-side-menus>
+  </body>
+
+  <script id="new-task.html" type="text/ng-template">
+    <div class="modal">
+      <ion-header-bar class="bar-secondary">
+        <h1 class="title">Nova Receita</h1>
+        <button class="button button-clear button-positive" ng-click="closeNewTask()">Fechar</button>
+      </ion-header-bar>
+      <ion-content>
+        <form ng-submit="createTask(task)">
+          <div class="list">
+            <label class="item item-input">
+              <input type="text" placeholder="Informe aqui sua receita" ng-model="task.title">
+            </label>
+          </div>
+          <div class="padding">
+            <button type="submit" class="button button-block button-positive">Criar receita</button>
+          </div>
+        </form>
+      </ion-content>
+    </div>
+  </script>
+
+  <script id="aboutMe.html" type="text/ng-template">
+    <div class="modal">
+      <ion-header-bar class="bar-secondary">
+        <h1 class="title">Sobre Mim</h1>
+        <button class="button button-clear button-positive" ng-click="closeAboutMe()">Sair</button>
+      </ion-header-bar>
+      <ion-content>
+        <h2 class="text-center">RODRIGO XAVIER</h2>
+        <div class="row">
+          <div class="col-md-2"></div>
+          <div class="col-md-4">
+            <img src="img/rodrigo.jpg" width="90%"></img>
+          </div>
+          <div class="col-md-2"></div>
+          <div class="col-md-3">
+            Bacharel em Sistemas de Informação pela PUC Minas. Possuo uma boa experiência profissional atuando no início da carreira como Instrutor de Informática para jovens e adultos. Depois, passei por estágio em suporte de informática até entrar na CEMIG onde trabalhei como Técnico em Gestão da Informação onde era responsável por todos os dados referentes ao setor de Construção de Redes. Assim, comecei a desenvolver minhas habilidades adquiridas na Universidade para o desenvolvimento de soluções na CEMIG.
+Após, trabalhei com desenvolvimento de sistemas web em ASP Clássico e banco de dados Oracle. Tive bastante experiência com elementos web como HTML, CSS, JS, Jquery, bootstrap, IIS, dentre outros.
+Atualmente aos 23 anos, trabalho com desenvolvimento de sistemas Mobile em ANDROID e Web em ANGULAR JS, além do banco de dados MONGODB. Faço parte de todo o ciclo de vida dos produtos da empresa desde o levantamento dos requisitos, discussões sobre usabilidade e viabilidade até o desenvolvimento e teste propriamente dito dos sistemas. Além desse trabalho, também dou manutenção no sistema legado em PHP e MYSQL.
+          </div>
+          <div class="col-md-3"></div>
+        </div>
+      </ion-content>
+    </div>
+  </script>
+</html>
